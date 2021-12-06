@@ -216,42 +216,6 @@ def attendance_mail(root) :
             password = "vinaychamola"
             mail(emailfrom,emailfrom,fileToSend,username,password)
             return
-        
-        
-def newcourse(root):
-    
-    code_name = askstring("New member", "Enter Course Code")
-    while code_name == '' :
-        showinfo('Name error','enter the name correctly')
-        nname = askstring("New member", "Enter Your Name")
-        
-        
-    course_name = askstring("New member", "Enter Course Name")
-    while course_name == '' :
-        showinfo('Name error','enter the name correctly')
-        nname = askstring("New member", "Enter Your Name")
-        
-    ic_name = askstring("New member", "Enter IC Name")
-    while ic_name == '' :
-        showinfo('Name error','enter the name correctly')
-        nname = askstring("New member", "Enter Your Name")
-        
-    with open("./courses/" + code_name + ".csv",'w') as f :
-        f_writer = csv.writer(f)
-        f_writer.writerow(["course_code","course_name","ic_name"])
-        
-    f.close()
-
-        
-    showinfo('confirmation message','Your details are successfully entered')
-    return None
-    
-        
-    
-    
-    
-    
-    
     
     
 #-- function to access and modify CSV file --#
@@ -344,7 +308,7 @@ def training(root):
         if len(files) > 0:
                 count = int(files[-1][-7:-4])+1
         c =0
-        while c < 10 :
+        while c < 60 :
                         ret,image = camera.read()
                         # Convert image to grayscale.
                         image = cv2.cvtColor(image, cv2.COLOR_RGB2GRAY)
@@ -463,13 +427,13 @@ if __name__ == '__main__':
         root = tk.Tk()
         time1 = ''
         clock = tk.Label(master=root, font=s_font,fg='green', bg='white')
-        clock.grid(column=1, columnspan=2,row=1)
+        clock.grid(column=1, columnspan=2,row=0)
+        
         def tick():
-            global time1
-            time2 = time.strftime('%H:%M:%S')
-            if time2 != time1:
-                time1 = time2
-                clock.config(text="Time:"+time2)
+            import datetime
+            e = datetime.datetime.now()
+            time2 = e.strftime('%H:%M:%S')
+            clock.config(text="Time:"+time2)
             clock.after(200, tick)
         tick()
         
@@ -479,7 +443,7 @@ if __name__ == '__main__':
         with open("./courses/" + class_code + ".csv",'w') as f :
             f.truncate()
             f_writer = csv.writer(f)
-            f_writer.writerow(["course_code","course_name","ic_name"])
+            #f_writer.writerow(["course_code","course_name","ic_name"])
         
         f.close()
         

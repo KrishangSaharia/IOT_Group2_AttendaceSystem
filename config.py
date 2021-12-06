@@ -20,7 +20,7 @@ HAAR_MIN_NEIGHBORS = 4
 HAAR_MIN_SIZE      = (30, 30)
 
 # Filename to use when saving the most recently captured image for debugging.
-DEBUG_IMAGE = 'capture.pgm'
+#DEBUG_IMAGE = 'capture.pgm'
 
 def get_camera():	
 	import cv2
